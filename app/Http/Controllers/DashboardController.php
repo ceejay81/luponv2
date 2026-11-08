@@ -6,7 +6,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalCases = \App\Models\LuponCase::count();
+        $totalCases = \App\Models\LuponCase::withTrashed()->count();
         $settledCases = \App\Models\LuponCase::where('status', 'settled')->count();
         $cfaCases = \App\Models\LuponCase::where('status', 'certified_to_court')->count();
 

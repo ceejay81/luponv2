@@ -156,14 +156,13 @@ class LuponCaseController extends Controller
     }
 
     /**
-     * Permanently delete a case.
+     * Archive a case (Soft delete - keeps record resting in the database).
      */
     public function destroy(LuponCase $case)
     {
-        // The user explicitly requested a permanent deletion
-        $case->forceDelete();
+        $case->delete();
 
-        return redirect()->route('cases.index')->with('success', 'Case permanently deleted.');
+        return redirect()->route('cases.index')->with('success', 'Case archived successfully.');
     }
 
     /**
